@@ -11,5 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c67b467dd4e7d4f9c129943674aa7f, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  _tableWidth: 10
-  _tableHeight: 10
+  TableWidth: 10
+  TableHeight: 10
+  Shapes:
+  - _width: 4
+    _height: 1
+    ShapeName: I
+    _shapeMap:
+    - Row: 01010101

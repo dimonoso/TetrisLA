@@ -8,14 +8,18 @@ namespace Tetris
 {
     public class MainContext : SignalContext
     {
-        public MainContext(MonoBehaviour view) : base(view)
+        private readonly string _pathToGameSetting;
+
+        public MainContext(string pathToGameSettings, MonoBehaviour view) : base(view)
         {
+            _pathToGameSetting = pathToGameSettings;
         }
 
         protected override void mapBindings()
         {
             base.mapBindings();
 
+            LoadScriptableObjects();
             ModelBindings();
             StateMachineBindings();
 
@@ -33,6 +37,12 @@ namespace Tetris
             injectionBinder.Bind<NoMoreMovesState>().ToSingleton();
 
             injectionBinder.Bind<IStateMachine>().To<StateMachine>().ToSingleton();
+        }
+
+        private void LoadScriptableObjects()
+        {
+            var settings = Resources.Load<GameSettingsScriptableObject>(_pathToGameSetting);
+            injectionBinder.Bind<GameSettingsScriptableObject>().ToValue(settings).ToSingleton();
         }
     }
 }

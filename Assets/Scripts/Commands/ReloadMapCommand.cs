@@ -8,23 +8,9 @@ namespace Tetris.Commands
     {
         [Inject]
         public MapModel MapModel { get; private set; }
-
-        private const string PathToSettings = "GameSettings";
-
-        private GameSettingsScriptableObject _gameSettings;
-
-        private GameSettingsScriptableObject GameSettings
-        {
-            get
-            {
-                if (_gameSettings == null)
-                {
-                    _gameSettings = Resources.Load<GameSettingsScriptableObject>(PathToSettings);
-                }
-
-                return _gameSettings;
-            }
-        }
+        
+        [Inject]
+        public GameSettingsScriptableObject GameSettings { get; private set; }
 
         public override void Execute()
         {
