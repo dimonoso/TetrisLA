@@ -155,6 +155,8 @@ namespace Tetris.Models
     {
         public int TableWidth;
         public int TableHeight;
+        public bool IsRotateShapesOnCreate;
+        public int NewShapesCount;
         public List<Shape> Shapes = new List<Shape>();
     }
 }

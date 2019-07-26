@@ -23,7 +23,22 @@ namespace Tetris
             ModelBindings();
             StateMachineBindings();
 
-            commandBinder.Bind<AppStartSignal>().To<ReloadMapCommand>().To<RestartGameCommand>().Once();
+            CommandsBindings();
+
+            commandBinder.Bind<AppStartSignal>().InSequence().To<ReloadMapCommand>().To<RestartGameCommand>().To<CreateShapesCommand>().Once();
+        }
+
+        private void CommandsBindings()
+        {
+            commandBinder.Bind<TryAddShapeToMapSignal>().To<TryAddShapeToMapCommand>().Pooled();
+            commandBinder.Bind<AddShapeToMapSignal>().InSequence().To<AddShapeToMapCommand>().To<FindBlockToDeleteCommand>().Pooled();
+            commandBinder.Bind<FailAddShapeToMapSignal>().To<NullCommand>();
+
+            commandBinder.Bind<RestartGameSignal>().InSequence().To<ReloadMapCommand>().To<RestartGameCommand>().To<CreateShapesCommand>();
+            commandBinder.Bind<NoMoreMovesSignal>().To<NoMoreMovesCommand>();
+            commandBinder.Bind<CreateShapesSignal>().To<CreateShapesCommand>().Pooled();
+            commandBinder.Bind<DeleteBlockSignal>().To<DeleteBlocksCommand>().Pooled();
+            commandBinder.Bind<ShapesCreatedSignal>().To<NullCommand>();
         }
 
         private void ModelBindings()

@@ -15,6 +15,7 @@ namespace Tetris.Commands
         public override void Execute()
         {
             MapModel.Map = new bool[GameSettings.TableHeight, GameSettings.TableWidth];
+            MapModel.Shapes.Clear();
             Debug.Log("Map is loaded");
         }
     }

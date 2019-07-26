@@ -58,6 +58,8 @@ namespace Tetris.Models.Editor
 
             _serializedObject.TableHeight = EditorGUILayout.IntField("Table Height", _serializedObject.TableHeight);
             _serializedObject.TableWidth = EditorGUILayout.IntField("Table Width", _serializedObject.TableWidth);
+            _serializedObject.IsRotateShapesOnCreate = EditorGUILayout.Toggle("Is Rotate Shapes On Create", _serializedObject.IsRotateShapesOnCreate);
+            _serializedObject.NewShapesCount = EditorGUILayout.IntField("New Shapes Count", _serializedObject.NewShapesCount);
 
             Separator();
         }
