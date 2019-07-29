@@ -1,4 +1,5 @@
-﻿using Tetris.Commands;
+﻿using Tetris.Audio;
+using Tetris.Commands;
 using Tetris.Models;
 using Tetris.Views;
 using Tetris.Views.Table;
@@ -18,13 +19,23 @@ namespace Tetris
 
         private readonly IUiManager _uiManager;
 
-        public MainContext(string pathToGameSettings, string pathToBlockPrefab, int preloadBlockCount, ITableViewManager tableViewManager, IUiManager uiManager, MonoBehaviour view) : base(view)
+        private readonly IAudioManager _audioManager;
+
+        public MainContext(
+            string pathToGameSettings,
+            string pathToBlockPrefab,
+            int preloadBlockCount,
+            ITableViewManager tableViewManager,
+            IUiManager uiManager,
+            IAudioManager audioManager,
+            MonoBehaviour view) : base(view)
         {
             _pathToGameSetting = pathToGameSettings;
             _pathToBlockPrefab = pathToBlockPrefab;
             _preloadBlockCount = preloadBlockCount;
             _tableViewManager = tableViewManager;
             _uiManager = uiManager;
+            _audioManager = audioManager;
         }
 
         protected override void mapBindings()
@@ -50,6 +61,7 @@ namespace Tetris
             commandBinder.Bind<AddShapeToMapSignal>().InSequence()
                 .To<AddShapeToMapCommand>()
                 .To<FindBlockToDeleteCommand>()
+                .To<PlayAddShapeSoundCommand>()
                 .To<CheckOnMovesCommand>().Pooled();
 
             commandBinder.Bind<RestartGameSignal>().InSequence()
@@ -65,6 +77,7 @@ namespace Tetris
                 .To<SpawnShapesCommand>().Pooled();
 
             commandBinder.Bind<DeleteBlockSignal>()
+                .To<PlayRemoveBlockSoundCommand>()
                 .To<DeleteBlocksViewsCommand>().Pooled();
         }
 
@@ -77,6 +90,7 @@ namespace Tetris
         {
             injectionBinder.Bind<ITableViewManager>().ToValue(_tableViewManager).ToSingleton();
             injectionBinder.Bind<IUiManager>().ToValue(_uiManager).ToSingleton();
+            injectionBinder.Bind<IAudioManager>().ToValue(_audioManager).ToSingleton();
 
             injectionBinder.Bind<string>().ToValue(_pathToBlockPrefab).ToName("BlockPrefabPath");
             injectionBinder.Bind<int>().ToValue(_preloadBlockCount).ToName("PreloadBlockCount");

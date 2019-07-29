@@ -415,6 +415,7 @@ MonoBehaviour:
   _preloadBlockCount: 100
   _tableViewManager: {fileID: 563268423}
   _uiManager: {fileID: 121229743}
+  _audioManager: {fileID: 898721952}
 --- !u!4 &500173734
 Transform:
   m_ObjectHideFlags: 0
@@ -833,6 +834,53 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
+--- !u!1 &898721951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 898721953}
+  - component: {fileID: 898721952}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &898721952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 898721951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32256b52e63d144685902e25701c922, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClips:
+  - Clip: {fileID: 8300000, guid: ef714803c9fd0c14bbc1ddff6743785e, type: 3}
+    Name: Click
+    Volume: 0.25
+  - Clip: {fileID: 8300000, guid: df98ec090b11487438b996d58e9342aa, type: 3}
+    Name: Drop
+    Volume: 1
+--- !u!4 &898721953
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 898721951}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &946799563
 GameObject:
   m_ObjectHideFlags: 0

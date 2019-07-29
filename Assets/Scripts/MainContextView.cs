@@ -1,4 +1,5 @@
 ﻿using strange.extensions.context.impl;
+using Tetris.Audio;
 using Tetris.Views;
 using Tetris.Views.Table;
 using UnityEngine;
@@ -22,9 +23,12 @@ namespace Tetris
         [SerializeField]
         private UiManager _uiManager;
 
+        [SerializeField]
+        private AudioManager _audioManager;
+
         private void Start()
         {
-            context = new MainContext(_pathToGameSettings, _pathToBlockPrefab, _preloadBlockCount, _tableViewManager, _uiManager, this);
+            context = new MainContext(_pathToGameSettings, _pathToBlockPrefab, _preloadBlockCount, _tableViewManager, _uiManager, _audioManager, this);
             context.Start();
         }
     }
