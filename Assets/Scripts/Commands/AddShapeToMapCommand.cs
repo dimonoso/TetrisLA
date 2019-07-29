@@ -53,7 +53,7 @@ namespace Tetris.Commands
         {
             for (var i = 0; i < MapModel.Shapes.Count; i++)
             {
-                if (CheckShapes(MapModel.Shapes[i], Shape))
+                if (CheckShapes(MapModel.Shapes[i].ShapeMatrix, Shape))
                 {
                     MapModel.Shapes.RemoveAt(i);
                     return;

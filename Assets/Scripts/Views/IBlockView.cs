@@ -9,5 +9,6 @@ namespace Tetris.Views
         void SetLocalPosition(Vector3 position);
         void Remove();
         void ToPool();
+        void SetColor(Color color);
     }
 }

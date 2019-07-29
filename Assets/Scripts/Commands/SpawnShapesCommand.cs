@@ -21,11 +21,11 @@ namespace Tetris.Commands
         {
             for (var i = 0; i < MapModel.Shapes.Count; i++)
             {
-                GenerateShape(MapModel.Shapes[i], TableViewManager.Shapes[i]);
+                GenerateShape(MapModel.Shapes[i].ShapeMatrix, TableViewManager.Shapes[i], MapModel.Shapes[i].ShapeColor);
             }
         }
 
-        private void GenerateShape(bool[,] shape, ShapeView shapeView)
+        private void GenerateShape(bool[,] shape, ShapeView shapeView, Color shapeColor)
         {
             var height = shape.GetLength(0);
             var width = shape.GetLength(1);
@@ -43,6 +43,7 @@ namespace Tetris.Commands
                         blockView.SetParent(shapeView.BlockContainer);
                         blockView.SetLocalPosition(new Vector3(j - width / 2f + 0.5f, height / 2f - i - 0.5f));
                         blockViews[i, j] = blockView;
+                        blockView.SetColor(shapeColor);
                     }
                 }
             }

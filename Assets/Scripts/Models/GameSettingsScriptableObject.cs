@@ -40,6 +40,8 @@ namespace Tetris.Models
         [SerializeField]
         private List<ShapeRow> _shapeMap;
 
+        public Color ShapeColor = Color.white;
+
         public Shape()
         {
             _shapeMap = new List<ShapeRow>();

@@ -30,25 +30,29 @@ namespace Tetris.Commands
             var newShapeIndex = Random.Next(GameSettings.Shapes.Count);
             var rotateMethod = GameSettings.IsRotateShapesOnCreate ? Random.Next(4) : 0;
 
+            var color = GameSettings.Shapes[newShapeIndex].ShapeColor;
+            bool[,] matrix;
+
             switch (rotateMethod)
             {
-                case 0:
+                default:
                     Debug.Log(GameSettings.Shapes[newShapeIndex].ShapeName + " - 0");
-                    MapModel.Shapes.Add(GetNewShapeNoRotate(GameSettings.Shapes[newShapeIndex]));
+                    matrix = GetNewShapeNoRotate(GameSettings.Shapes[newShapeIndex]);
                     break;
                 case 1:
                     Debug.Log(GameSettings.Shapes[newShapeIndex].ShapeName + " - 90");
-                    MapModel.Shapes.Add(GetNewShapeRotate90(GameSettings.Shapes[newShapeIndex]));
+                    matrix = GetNewShapeRotate90(GameSettings.Shapes[newShapeIndex]);
                     break;
                 case 2:
                     Debug.Log(GameSettings.Shapes[newShapeIndex].ShapeName + " - 180");
-                    MapModel.Shapes.Add(GetNewShapeRotate180(GameSettings.Shapes[newShapeIndex]));
+                    matrix = GetNewShapeRotate180(GameSettings.Shapes[newShapeIndex]);
                     break;
                 case 3:
                     Debug.Log(GameSettings.Shapes[newShapeIndex].ShapeName + " - 270");
-                    MapModel.Shapes.Add(GetNewShapeRotate270(GameSettings.Shapes[newShapeIndex]));
+                    matrix = GetNewShapeRotate270(GameSettings.Shapes[newShapeIndex]);
                     break;
             }
+            MapModel.Shapes.Add(new ShapeSettings(matrix, color));
         }
 
         private bool[,] GetNewShapeNoRotate(Shape shape)

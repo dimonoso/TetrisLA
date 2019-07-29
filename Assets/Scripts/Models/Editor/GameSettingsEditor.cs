@@ -100,6 +100,9 @@ namespace Tetris.Models.Editor
             }
 
             shape.ShapeName = EditorGUILayout.TextField("Shape Name", shape.ShapeName);
+
+            shape.ShapeColor = EditorGUILayout.ColorField("Shape Color", shape.ShapeColor);
+
             for (var i = 0; i < shape.Height; i++)
             {
                 EditorGUILayout.BeginHorizontal();

@@ -15,6 +15,11 @@ namespace Tetris.Views
             Block.SetActive(isActive);
         }
 
+        public void SetColor(Color color)
+        {
+            Block.SetColor(color);
+        }
+
         public void SetParent(Transform parent)
         {
             Block.Transform.parent = parent;

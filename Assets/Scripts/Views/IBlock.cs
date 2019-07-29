@@ -8,5 +8,6 @@ namespace Tetris.Views
         void Remove(Action onRemovedAction);
         void SetActive(bool isActive);
         Transform Transform { get; }
+        void SetColor(Color color);
     }
 }

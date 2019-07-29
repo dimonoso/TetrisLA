@@ -40,7 +40,7 @@ namespace Tetris.Commands
         {
             foreach (var shape in MapModel.Shapes)
             {
-                if (CheckShape(position, shape))
+                if (CheckShape(position, shape.ShapeMatrix))
                 {
                     return true;
                 }

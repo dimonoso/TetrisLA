@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Tetris.Views
@@ -8,11 +7,14 @@ namespace Tetris.Views
     public class Block : MonoBehaviour, IBlock
     {
         [SerializeField]
+        private float _animationTime;
+
+        [SerializeField]
         private Animator _animator;
 
         [SerializeField]
-        private float _animationTime;
-
+        private SpriteRenderer _spriteRenderer;
+        
         public void Remove(Action onRemovedAction)
         {
             _animator.SetTrigger("Remove");
@@ -22,6 +24,11 @@ namespace Tetris.Views
         public void SetActive(bool isActive)
         {
             gameObject.SetActive(isActive);
+        }
+
+        public void SetColor(Color color)
+        {
+            _spriteRenderer.color = color;
         }
 
         public Transform Transform

@@ -21,39 +21,46 @@ MonoBehaviour:
     ShapeName: I
     _shapeMap:
     - Row: 01010101
+    ShapeColor: {r: 0.36078432, g: 0.89411765, b: 0.3647059, a: 1}
   - _width: 3
     _height: 2
     ShapeName: J
     _shapeMap:
     - Row: 010000
     - Row: 010101
+    ShapeColor: {r: 0.89411765, g: 0.36078432, b: 0.36078432, a: 1}
   - _width: 3
     _height: 2
     ShapeName: L
     _shapeMap:
     - Row: 000001
     - Row: 010101
+    ShapeColor: {r: 0.84313726, g: 0.89411765, b: 0.36078432, a: 1}
   - _width: 2
     _height: 2
     ShapeName: O
     _shapeMap:
     - Row: 0101
     - Row: 0101
+    ShapeColor: {r: 0.89411765, g: 0.36078432, b: 0.36078432, a: 1}
   - _width: 3
     _height: 2
     ShapeName: S
     _shapeMap:
     - Row: 010100
     - Row: 000101
+    ShapeColor: {r: 0.3647059, g: 1, b: 0, a: 1}
   - _width: 3
     _height: 2
     ShapeName: T
     _shapeMap:
     - Row: 010101
     - Row: 000100
+    ShapeColor: {r: 0.36078432, g: 0.74509805, b: 0.89411765, a: 1}
   - _width: 3
     _height: 2
     ShapeName: Z
     _shapeMap:
     - Row: 000101
     - Row: 010100
+    ShapeColor: {r: 1, g: 0, b: 0.80784315, a: 1}
