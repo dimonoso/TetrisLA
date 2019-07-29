@@ -1,4 +1,5 @@
 ﻿using strange.extensions.command.impl;
+using System;
 using Tetris.Models;
 
 namespace Tetris.Commands
@@ -15,21 +16,19 @@ namespace Tetris.Commands
         public MapModel MapModel { get; private set; }
 
         [Inject]
-        public FailAddShapeToMapSignal FailSignal { get; private set; }
+        public AddShapeToMapSignal AddShapeSignal { get; private set; }
 
         [Inject]
-        public AddShapeToMapSignal AddShapeSignal { get; private set; }
+        public Action<IndexedPosition> OkAction { get; private set; }
 
         public override void Execute()
         {
             if (Shape.GetLength(0) + Position.Y > MapModel.Map.GetLength(0))
             {
-                FailSignal.Dispatch();
                 return;
             }
             if (Shape.GetLength(1) + Position.X > MapModel.Map.GetLength(1))
             {
-                FailSignal.Dispatch();
                 return;
             }
 
@@ -39,11 +38,12 @@ namespace Tetris.Commands
                 {
                     if (MapModel.Map[Position.Y + i, Position.X + j] && Shape[i, j])
                     {
-                        FailSignal.Dispatch();
                         return;
                     }
                 }
             }
+
+            OkAction(Position);
 
             AddShapeSignal.Dispatch(Shape, Position);
         }

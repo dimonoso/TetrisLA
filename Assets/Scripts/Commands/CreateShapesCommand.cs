@@ -37,15 +37,19 @@ namespace Tetris.Commands
             switch (rotateMethod)
             {
                 case 0:
+                    Debug.Log(GameSettings.Shapes[newShapeIndex].ShapeName + " - 0");
                     MapModel.Shapes.Add(GetNewShapeNoRotate(GameSettings.Shapes[newShapeIndex]));
                     break;
                 case 1:
+                    Debug.Log(GameSettings.Shapes[newShapeIndex].ShapeName + " - 90");
                     MapModel.Shapes.Add(GetNewShapeRotate90(GameSettings.Shapes[newShapeIndex]));
                     break;
                 case 2:
+                    Debug.Log(GameSettings.Shapes[newShapeIndex].ShapeName + " - 180");
                     MapModel.Shapes.Add(GetNewShapeRotate180(GameSettings.Shapes[newShapeIndex]));
                     break;
                 case 3:
+                    Debug.Log(GameSettings.Shapes[newShapeIndex].ShapeName + " - 270");
                     MapModel.Shapes.Add(GetNewShapeRotate270(GameSettings.Shapes[newShapeIndex]));
                     break;
             }
@@ -89,7 +93,7 @@ namespace Tetris.Commands
             {
                 for (var j = 0; j < shape.Width; j++)
                 {
-                    newShape[i, j] = shape.At(shape.Height - i, shape.Width - j);
+                    newShape[i, j] = shape.At(shape.Height - 1 - i, shape.Width - 1 - j);
                 }
             }
 
