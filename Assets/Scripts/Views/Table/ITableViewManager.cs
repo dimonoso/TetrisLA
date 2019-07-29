@@ -10,5 +10,11 @@ namespace Tetris.Views.Table
         Vector3 TopLeftAnchorPosition { get; }
 
         Transform ContainerTransform { get; }
+
+        void RemoveSelectedBlocks(List<IndexedPosition> blocksToRemove);
+
+        void RemoveAllBlocks();
+
+        IBlockView[,] BlockViews { get; }
     }
 }

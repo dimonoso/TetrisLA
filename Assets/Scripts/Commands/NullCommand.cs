@@ -1,4 +1,5 @@
 ﻿using strange.extensions.command.impl;
+using UnityEngine;
 
 namespace Tetris.Commands
 {
@@ -6,6 +7,7 @@ namespace Tetris.Commands
     {
         public override void Execute()
         {
+            Debug.LogError("Null command is implemented");
         }
     }
 }

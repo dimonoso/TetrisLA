@@ -22,11 +22,11 @@ namespace Tetris.Views
         public IBlockView Create()
         {
             var go = GameObject.Instantiate(_prefab);
-            InjectionBinder.Bind<GameObject>().ToValue(go).ToSingleton();
+            InjectionBinder.Bind<IBlock>().ToValue(go.GetComponent<IBlock>()).ToSingleton();
 
             var blockView = InjectionBinder.GetInstance<IBlockView>();
 
-            InjectionBinder.Unbind<GameObject>();
+            InjectionBinder.Unbind<IBlock>();
 
             return blockView;
         }

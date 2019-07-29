@@ -13,9 +13,6 @@ namespace Tetris.Commands
         [Inject]
         public GameSettingsScriptableObject GameSettings { get; private set; }
 
-        [Inject]
-        public ShapesCreatedSignal ShapesCreatedSignal { get; private set; }
-
         private static readonly Random Random = new Random();
 
         public override void Execute()
@@ -26,7 +23,6 @@ namespace Tetris.Commands
             }
 
             Debug.Log("ShapesCreated");
-            ShapesCreatedSignal.Dispatch();
         }
 
         private void CreateShape()

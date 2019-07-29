@@ -66,6 +66,11 @@ namespace Tetris.Views.Table
 
         private void OnMouseDown()
         {
+            if (Shape == null)
+            {
+                return;
+            }
+
             _isDrag = true;
             _lastMousePosition = GetMousePosition();
             _animator.SetBool("Take", true);
@@ -131,6 +136,32 @@ namespace Tetris.Views.Table
                     {
                         BlockViews[i, j].SetParent(parent);
                         BlockViews[i, j].SetLocalPosition(new Vector3(j + indexedPosition.X, -i - indexedPosition.Y));
+                        TableViewManager.BlockViews[indexedPosition.Y + i, indexedPosition.X + j] = BlockViews[i, j];
+                    }
+                }
+            }
+
+            BlockViews = null;
+        }
+
+        public void RemoveShapes()
+        {
+            if (BlockViews == null)
+            {
+                return;
+            }
+
+            var height = BlockViews.GetLength(0);
+            var width = BlockViews.GetLength(1);
+            Shape = null;
+
+            for (var i = 0; i < height; i++)
+            {
+                for (var j = 0; j < width; j++)
+                {
+                    if (BlockViews[i, j] != null)
+                    {
+                        BlockViews[i, j].ToPool();
                     }
                 }
             }

@@ -1,7 +1,6 @@
-﻿using System;
+﻿using strange.extensions.signal.impl;
+using System;
 using System.Collections.Generic;
-using strange.extensions.signal.impl;
-using Tetris.Views.Table;
 
 namespace Tetris
 {
@@ -12,6 +11,5 @@ namespace Tetris
     public class TryAddShapeToMapSignal : Signal<bool[,], IndexedPosition, Action<IndexedPosition>> { }
     public class AddShapeToMapSignal : Signal<bool[,], IndexedPosition> { }
     public class CreateShapesSignal: Signal { }
-    public class ShapesCreatedSignal : Signal { }
     public class DeleteBlockSignal : Signal<List<IndexedPosition>> { }
 }

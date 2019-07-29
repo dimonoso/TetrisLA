@@ -62,6 +62,7 @@ namespace Tetris.Commands
             {
                 if (MapModel.Map[rowIndex, i])
                 {
+                    MapModel.Map[rowIndex, i] = false;
                     removeList.Add(new IndexedPosition(rowIndex, i));
                 }
             }
@@ -76,6 +77,7 @@ namespace Tetris.Commands
             {
                 if (MapModel.Map[i, columIndex])
                 {
+                    MapModel.Map[i, columIndex] = false;
                     removeList.Add(new IndexedPosition(i, columIndex));
                 }
             }
